@@ -4,7 +4,7 @@
 int promptForAnInteger(char message[], int minPosition, int maxPosition);
 
 int main(){
-  int arr[N] = {0};
+  char mem = 0;
   char c;
 
   while (1) {
@@ -25,7 +25,12 @@ int main(){
           // specific for this part of switch
           int p = promptForAnInteger("Enter bit position: ", 0, N-1);
           int newValue = promptForAnInteger("Enter bit value: ", 1, 2);
-          arr[p] = newValue == 1 ? 1 : 0;
+	  if (newValue == 1){
+	    mem = mem | (1 << p);
+	  }
+	  else {
+	    mem = mem & ~(1 << p);
+	  }
         };
         break;
       case 'G' :
@@ -33,7 +38,7 @@ int main(){
         {
           // same as above
           int p = promptForAnInteger("Enter bit position: ", 0, N-1);
-          printf("%d\n", arr[p]);
+          printf("%d\n", (mem >> p) & 1);
         };
         break;
       case 'H' :
