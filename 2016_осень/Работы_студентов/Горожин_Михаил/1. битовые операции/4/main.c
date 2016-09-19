@@ -25,12 +25,7 @@ int main(){
           // specific for this part of switch
           int p = promptForAnInteger("Enter bit position: ", 0, N-1);
           int newValue = promptForAnInteger("Enter bit value: ", 1, 2);
-	  if (newValue == 1){
-	    mem = mem | (1 << p);
-	  }
-	  else {
-	    mem = mem & ~(1 << p);
-	  }
+	  mem = (newValue == 1) ? mem | (1 << p) : mem & ~(1 << p);
         };
         break;
       case 'G' :
