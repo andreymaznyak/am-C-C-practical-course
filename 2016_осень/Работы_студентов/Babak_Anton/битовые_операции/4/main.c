@@ -15,7 +15,7 @@ int main() {
     }
     if (command == 'g'){
       printf("Введите номер бита: "); scanf("%d", &numBit);
-      printf("Бит с номером %d равен %d\n", numBit, getBit(bitField, numBit));
+      printf("Бит с номером %d равен %d\n", numBit, (bitField & 1 << numBit ? 1 : 0));
     }
     if (command == 'm') {
       help;
