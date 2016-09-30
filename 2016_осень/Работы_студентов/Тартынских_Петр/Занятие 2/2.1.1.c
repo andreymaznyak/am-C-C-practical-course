@@ -5,7 +5,6 @@
 int main(){
 	
 	double a, b, c, d, Xbgn, Xend, Xstep, X, F;
-	int ai, bi, ci;
 	
 	printf("Enter a \n");
 	scanf("%lf", &a);
@@ -16,19 +15,13 @@ int main(){
 	printf("Enter d \n");
 	scanf("%lf", &d);
 	
-	ai = (int) a;
-	bi = (int) b;
-	ci = (int) c;
-	
     printf("Enter Xbgn \n");
 	scanf("%lf", &Xbgn);
 	printf("Enter Xend \n");
 	scanf("%lf", &Xend);
 	printf("Enter Xstep \n");
 	scanf("%lf", &Xstep);
-	
-	
-	
+		
 	printf("X \t F \n");
 	for(X = Xbgn; X <= Xend; X = X + Xstep) {
 		printf("%.3lf \t", X);
