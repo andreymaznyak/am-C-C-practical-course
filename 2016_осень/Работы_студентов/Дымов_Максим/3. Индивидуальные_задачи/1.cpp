@@ -4,30 +4,30 @@
 int main()
 {
 	
-	int mas[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	int a[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	
-	int i = 0, j = N - 1, num, sum, bo;
+	int i = 0, j = N - 1, num, sum, bo = 0;
 	
 	printf("Enter the number: \n");
 	scanf("%d", &num);
 	
 	for(; i < j;)
 	{
-		sum = mas[i] + mas[j];
+		sum = a[i] + a[j];
 		
 		if (sum == num)
 		{
-			printf("[%d]: %d + [%d]: %d = %d \n", i, mas[i], j, mas[j], sum);
+			printf("[%d] = %d [%d] = %d \n", i, a[i], j, a[j]);
+			j--;
+			i++;
 			bo++;
 		}
-			
-		j--;
 		
-		if (sum < num) i++, j = N - 1;
-		
+		if (sum < num) i++;
+			else if(sum > num) j--;
 	}
 	
-	if (bo == 0) printf("Such numbers not found");
+	if (bo == 0 )printf("Such numbers not found");
 	
 	return 0;
 }
