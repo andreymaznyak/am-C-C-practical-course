@@ -43,7 +43,7 @@ bool STUDENT::t=false;
 
 int main()
 {
-	STUDENT *spisok = new STUDENT[2];
+	STUDENT *spisok = new STUDENT[10];
 	if(!STUDENT::t) cout<<"Takih studentov net"<<endl;
 	delete [] spisok;
 	return 0;
