@@ -27,9 +27,9 @@ int main()
 			if(spisok[i].usp[j]==2)  
 			{
 				b=true; 
+				j=N;
 				printf("%s", &spisok[i].name); 
 				printf(" %d\n", spisok[i].number); 
-				j=N;
 			}			
 		}
 	}
