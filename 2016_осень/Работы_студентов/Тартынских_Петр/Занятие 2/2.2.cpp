@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+ 
 #include <stdlib.h>
 
 #include <ctime>
@@ -26,10 +26,10 @@ int main(){
 
 //Вывод элементов
 	
-/*	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		printf("%d \n", array[i]);
-	}*/
+	}
 
 //Решение задачи
 
@@ -39,17 +39,20 @@ int main(){
 	
 	count = 0;
 	
-	for (int i = 0; i < 10; i++)
-	{
-		if (array[i] == num)  {
+	for (int i = 0; i < 9; i++)
+	{		
+		for (int j = i + 1; j < 10; j++)
+		{
+			if (array[i]+array[j] == num)  {
 			count++;
-			printf("%d \n", i);
-			if (count == 2) summ = 2 * array[i];
+			printf("%d, %d \n", i, j);
+			}
 		}
 	}
-	if (count == 0) {
-		printf("No elements equal to n");
-	}
 	
+	if (count == 0) {
+			printf("No elements equal to n");
+		}
+		
 	return 0;
 }
