@@ -1,50 +1,39 @@
-#include <iostream>
-#include <string>
+#include<stdio.h>
+#include<malloc.h>
+
 #define N 5
-using namespace std;
+#define K 2
 
-class STUDENT
+struct STUDENT
 {
-	private:
-	string *name;
-	int *number;
-	int *usp;
-	
-	public:
-	static bool t;
-	
-	bool Check (int *a)
-	{
-		int i;
-		for(i=0; i<N; i++) if(a[i]==2)  {t=true; return true; }
-		return false;
-	}
-	
-	STUDENT()
-	{
-		name = new string;
-		number = new int;
-		usp = new int[N];	
-		cin >> *name;
-		cin >> *number;
-		for(int i=0; i<N; i++) cin >> usp[i];
-	}
-	
-	~STUDENT()
-	{
-		if(Check(usp)) cout<<*name<<" "<<*number<<endl;
-		delete name;
-		delete number;
-		delete [] usp;
-	}
+	char* name;
+	int number, usp[N];
 };
-
-bool STUDENT::t=false;
 
 int main()
 {
-	STUDENT *spisok = new STUDENT[10];
-	delete [] spisok;
-	if(!STUDENT::t) cout<<"Takih studentov net"<<endl;
+	bool b=false;
+	STUDENT *spisok = (STUDENT*)malloc(K*sizeof(STUDENT));
+	for(int i=0; i<K; i++)
+	{
+		scanf("%s",&spisok[i].name);
+		scanf("%d",&spisok[i].number);
+		for(int j=0; j<N; j++) scanf("%d",&spisok[i].usp[j]);		
+	}
+	for(int i=0; i<K; i++)
+	{
+		for(int j=0; j<N; j++) 
+		{
+			if(spisok[i].usp[j]==2)  
+			{
+				b=true; 
+				printf("%s", &spisok[i].name); 
+				printf(" %d\n", spisok[i].number); 
+				j=N;
+			}			
+		}
+	}
+	free(spisok);
+	if(!b) printf("Takih studentov net");
 	return 0;
 }
