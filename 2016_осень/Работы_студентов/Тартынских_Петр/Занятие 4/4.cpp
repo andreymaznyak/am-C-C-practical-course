@@ -19,18 +19,13 @@ void print(AEROFLOT *planes)
 	}
 }
 
-void enter(AEROFLOT *planes)
+void enter(FILE *inf, AEROFLOT *planes)
 {
 	for (int i = 0; i < N; i++)
 	{
-		printf("Flight destination: [%d] ", i + 1);
-		scanf("%s", &planes[i].city);
-		
-		printf("Flight number: [%d] ", i + 1);
-		scanf("%d", &planes[i].num);
-		
-		printf("Plane type: [%d] ", i + 1);
-		scanf("%s", &planes[i].planetype);		
+		fscanf(inf, "%s", &planes[i].city);
+		fscanf(inf, "%d", &planes[i].num);
+		fscanf(inf, "%s", &planes[i].planetype);		
 	}
 }
 
@@ -52,15 +47,19 @@ void sort(AEROFLOT *planes)
 
 int main()
 {	
+	FILE *inf, *outf;
+	inf = fopen("input.txt" , "r");
+	
 	AEROFLOT *planes = (AEROFLOT *) malloc(N * sizeof(AEROFLOT));
 	
 	char typep[32];
 	int count = 0;
 	
-	printf("Enter: fligth destination, fligth number, plane type \n");
-	enter(planes);
+	printf("Scanning ""input.txt""... \n");
+	enter(inf, planes);
+	fclose(inf);
 	
-	printf("You entered: \n");
+	printf("Entered from file: \n");
 	print(planes);
 	
 	sort(planes);	
@@ -70,17 +69,21 @@ int main()
 	printf("Enter aircraft type \n");			
 	scanf("%s", &typep);
 	
+	outf = fopen("output.txt" , "w");
+	
 	for (int i = 0; i < N; i++)
 		if (strcmp(typep, planes[i].planetype) == 0){
 			count++;
-			printf("[%d] %s \n", i+1 , &planes[i].city);
-			printf("[%d] %d \n", i+1 , planes[i].num);
+			fprintf(outf, "[%d] %s \n", i+1 , &planes[i].city);
+			fprintf(outf, "[%d] %d \n", i+1 , planes[i].num);
 		}
 		
 	if (count == 0)
-		printf("No such aircraft type");
-		
+		fprintf(outf, "No such aircraft type");
+	
+	printf("The answer has been recorded");	
 	free(planes);
-		
+	fclose(outf);
+			
 	return 0;
 }
