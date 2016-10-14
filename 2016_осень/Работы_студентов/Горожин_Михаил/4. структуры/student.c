@@ -1,23 +1,20 @@
 #include "student.h"
 
-void addStudent(student* arr, int offset){
-  int buffsize = 255;
+void addStudent(FILE* in, student* arr, int offset){
+  int buffsize = 4096;
   (*(arr+offset)).fullname = (char*)malloc(sizeof(char)*buffsize);
-  printf("Enter name: ");
-  scanf("%s", arr[offset].fullname);
-  
-  printf("Enter group: ");
-  scanf("%d", &arr[offset].group);
-  
-  printf("Enter marks(splitted with space): ");
-  scanf("%d %d %d %d %d",
-	(int*)&arr[offset].marks[0],
-	(int*)&arr[offset].marks[1],
-	(int*)&arr[offset].marks[2],
-	(int*)&arr[offset].marks[3],
-	(int*)&arr[offset].marks[4]);
-  printf("\n");
+  char trash[buffsize];
 
+  fscanf(in,"%[^\n]s",arr[offset].fullname);
+  fscanf(in,"%[\n]",trash);
+  
+  fscanf(in,"%d",&arr[offset].group);
+  fscanf(in,"%[\n]",trash);
+
+  for (int i = 0; i < NUMBER_OF_MARKS; i++) {
+    fscanf(in,"%d",(int*)&arr[offset].marks[i]);
+    fscanf(in,"%[\n]",trash);
+  }
 }
 
 char predicate(student s){
@@ -36,12 +33,12 @@ float average(student s){
   return (res*1.0)/NUMBER_OF_MARKS;
 }
 
-void print(student arr){
-  printf("%s\n", arr.fullname);
-  printf("%d\n", arr.group);
+void print(student arr, FILE* f){
+  fprintf(f, "%s\n", arr.fullname);
+  fprintf(f, "%d\n", arr.group);
   for (int j = 0; j < NUMBER_OF_MARKS; j++)
-    printf(j == 4 ? "%d" : "%d, ", arr.marks[j]);
-  printf("\n\n");
+    fprintf(f, j == 4 ? "%d" : "%d, ", arr.marks[j]);
+  fprintf(f, "\n\n");
 }
 
 void swap(student* arr, int i, int j){
@@ -58,6 +55,7 @@ void sort(student* arr, int from, int to){
   for(int i = from; i < to; i++) {
     if (average(*(arr+i)) <= average(*(arr+pivot))){
       swap(arr, i, wall);
+      wall++;
     }
   }
   swap(arr, pivot, wall);
