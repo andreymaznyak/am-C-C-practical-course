@@ -1,35 +1,22 @@
 #include <stdio.h>
-#include <locale.h>
 
-main()
+void main()
 {
-	setlocale(LC_ALL, "RUS");
+	int number, numberCopy, i=0; // Input number, copy of it (will be changed), counter
+	char numberBit[10]={}; // Holds bit interpretation (suitable for big input numbers)
 	
-	int n, n1, i=0;
-	char n2[10]={};
-	
-	printf("Введите число: ");
-	scanf("%d", &n);
-	n1 = n;
-	printf("\nПредставления числа:\n");
-	
-	while (n1 != 0)
+	printf("Input number: ");
+	scanf("%d", &number);
+	numberCopy = number; // Got copy to change it
+	printf("\nNumber interpretations:\n");
+	while (numberCopy != 0)
 	{
-		n2[i] = 1 & n1;
-		n1 = n1 >> 1;
-		i++;
+		numberBit[i] = 1 & numberCopy; // Sets the last bit to 1
+		numberCopy = numberCopy >> 1; // Moves all bit interpretation to right
+		i++; // Gets the number of symbols in bit interpretation
 	}
-	
-	printf("двоичное - ");
-	
+	printf("2 - ");
 	for (--i; i>=0; i--)
-	{
-		printf("%d", n2[i]);
-	}
-	
-	printf("\n");
-	
-	printf("восьмеричное - %o\nшестнадцатеричное - %x", n, n);
-	
-	return 0;
+		printf("%d", numberBit[i]);	// Reverse bit interpretation to normal
+	printf("\n8 - %o\n16 - %x", number, number);
 }
