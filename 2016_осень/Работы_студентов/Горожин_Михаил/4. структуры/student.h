@@ -14,11 +14,11 @@ typedef struct student {
 } student;
 
 /*
-  Prompts for a student struct field by field.
+  Reads a student struct from file in.
   Insert it into arr at offset.
 */
-void addStudent(student* arr, int offset);
-
+void addStudent(FILE* in, student* arr, int offset);
+  
 /*
   Just a predicate to filter output.
 */
@@ -32,7 +32,7 @@ float average(student s);
 /*
   Prints a student struct.
 */
-void print(student arr);
+void print(student arr, FILE* f);
 
 /*
   Swap positions i and j in an arr. Used in sort.
