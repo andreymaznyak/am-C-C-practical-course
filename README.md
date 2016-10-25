@@ -17,5 +17,5 @@ Andrey Maznyak(andreymaznyak@gmail.com)
        1. [Драйвер для клавиатуры]()
        1. ...
     1. **_Репозитории программ на ПК_**  
-       1. [Консольная программа для выполнения команд и загруки файлов с помощью UART](https://github.com/maxiwpm/UART-practice)
+       1. [Консольная программа для выполнения команд и загруки файлов с помощью UART](https://github.com/maxiwpm/KM-pc-terminal)
        1. ...
