@@ -2,33 +2,31 @@
 
 #define N 5
 
-int main() 
-{
-	int arr[N];
-	int n = 0;
-	int err = 1;
-	printf("Enter array\n");
+int main(){
+  int arr[N] = {1, 2, 3, 4, 5};
 
-	for(int i=0;i<5;++i)
+  int d, tmp;
+
+  printf("Enter your number: ");
+  scanf("%d", &d);
+
+  for (int i = 0, j = N-1; i < j;) 
+  {
+    tmp = arr[i] + arr[j];
+    if (tmp == d) 
 	{
-		arr[i] = 0;
-		scanf("%d", &arr[i]);
-	}
-
-	printf("Enter number\n");
-	scanf("%d", &n);
-
-	for(int i=0;i<5;++i)
-		for(int j=i+1;j<5;++j)
-			if(arr[i]+arr[j] == n){
-				printf("i1: %d i2: %d n1: %d n2: %d", i, j, arr[i], arr[j]);
-				err = 0;
-			}
-	if(err)
-		printf("not found");
-			
-
-	getchar();
-	getchar();
-	return 0;
+      printf("i: %d; j: %d; arr[i]: %d arr[j]: %d\n", i, j, arr[i], arr[j]);
+	  getchar();
+	  getchar();
+      return 0;
+    }
+    else 
+      if (tmp < d) 
+		i++;
+      else
+		j--;
+  }
+  
+  printf("Not found");
+  return 0;
 }
