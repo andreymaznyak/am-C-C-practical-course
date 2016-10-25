@@ -14,7 +14,7 @@ Andrey Maznyak(andreymaznyak@gmail.com)
        1. [UART обмен данными](https://github.com/fogost/interaction_protocol)
        1. ...
     1. **_Репозитории библиотек периферийных устройств_**  
-       1. [Драйвер для клавиатуры]()
+       1. [Драйвер для клавиатуры](https://github.com/Eduard245/peripherals)
        1. ...
     1. **_Репозитории программ на ПК_**  
        1. [Консольная программа для выполнения команд и загруки файлов с помощью UART](https://github.com/maxiwpm/KM-pc-terminal)
