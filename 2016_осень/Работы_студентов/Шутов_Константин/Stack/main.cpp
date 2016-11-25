@@ -79,6 +79,7 @@ class Stack
 			p = head->data;
 			head = NULL;
 		}
+                
 		return p;
 	}
 };
