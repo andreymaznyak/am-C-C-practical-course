@@ -2,7 +2,7 @@
 #include <iostream>
 #include <windows.h>
 
-inline std::ostream& blue(std::ostream &s)
+inline std::ostream& blue(std::ostream &s) 
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
     SetConsoleTextAttribute(hStdout, FOREGROUND_BLUE|FOREGROUND_GREEN|FOREGROUND_INTENSITY);
