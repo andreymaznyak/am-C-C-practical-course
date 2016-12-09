@@ -57,6 +57,7 @@ int main()
 	char typep[32];
 	int count = 0;
 	
+	printf("%d \n", sizeof(AEROFLOT));
 	printf("Enter: fligth destination, fligth number, plane type \n");
 	enter(planes);
 	
