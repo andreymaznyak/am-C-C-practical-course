@@ -45,3 +45,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+.idea/am-C-C-practical-course.iml
+*.xml

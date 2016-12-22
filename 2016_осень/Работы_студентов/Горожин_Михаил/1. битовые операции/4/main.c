@@ -10,7 +10,7 @@ int main(){
   while (1) {
     //scanf("%c", &c);
     // need to use this to prevent newline character
-    // 
+    // recognition as a separate character
     fseek(stdin,0,SEEK_END);
     c = getc(stdin);
     switch (c) {

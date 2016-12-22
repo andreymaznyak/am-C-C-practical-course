@@ -12,7 +12,7 @@ int main(){
   // so on every step we are getting leftmost bit of an integer and printing it
   // not very beautifull(i mean leading zeroes) but works for every unsigned int
   for (int i = (sizeof(unsigned int) * CHAR_BIT - 1); i >= 0; i--){
-    int highestBit = (n >> i) & 1; // ignore garbage at the right
+    int highestBit = (n >> i) & 1; // ignore garbage at the left
     printf("%d", highestBit);
   }
   printf("\nHexidecimal representation: %X\n", n);
